@@ -25,5 +25,8 @@
     "nodemailer": "^6.5.0",
     "speakeasy": "^2.0.0",
     "uuid-v4": "^0.1.0"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
