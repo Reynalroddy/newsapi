@@ -14,7 +14,7 @@ const morgan = require('morgan');
 
 
 
-connectDB();
+
 
 const app = express();
 
@@ -42,12 +42,25 @@ app.get('*', function(req, res){
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(
-  PORT,
-  console.log(
-    `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.red,
-  ),
-);
+// app.listen(
+//   PORT,
+//   console.log(
+//     `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.red,
+//   ),
+// );
+
+const start = async () => {
+  try {
+    await connectDB(process.env.MONGO_URI);
+    app.listen(PORT, () => {
+      console.log("server started!");
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+start();
 
 
 
